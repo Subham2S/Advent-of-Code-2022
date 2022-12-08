@@ -18,3 +18,10 @@ print(elfs[max(elfs, key=elfs.get)])
 # Part - 2
 print(sum(
     dict(sorted(elfs.items(), key=lambda item: item[1], reverse=True)[:3]).values()))
+
+# Easier Approach
+# Part - 1
+print(max(elfs.values()))
+
+# Part - 2
+print(sum(sorted(elfs.values(), reverse=True)[:3]))
