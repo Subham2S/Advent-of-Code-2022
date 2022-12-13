@@ -1,35 +1,35 @@
 CASE-1 - Movement (R)
-    INITIALLY :
-    1. Overlapped : hi==ti, hj==tj : hi, ti, tj - No change, hj += 1
-    2.a Horizontal : [f] hi==ti, hj==tj+1 : hi, ti - No change, hj += 1, tj += 1 
-    2.b Horizontal : [b] hi==ti, hj==tj-1 : hi, ti, tj - No change, hj += 1
-    3. Vertical : (hi==ti+1) | (hi==ti-1), hj==tj : hi, ti, tj - No change, hj += 1
-    4.a Diagonal : [f] (hi==ti+1) | (hi==ti-1), hj==tj+1 : hi - No change, ti, tj = hi, hj, hj += 1
-    4.b Diagonal : [b] (hi==ti+1) | (hi==ti-1), hj==tj-1 : hi, ti, tj - No change, hj += 1
+    INIt1ALLY :
+    1. Overlapped : h1==t1 & h2==t2 : h1 & t1 & t2 - No change & h2 += 1
+    2.a Horizontal : [f] h1==t1 & h2==t2+1 : h1 & t1 - No change & h2 += 1 & t2 += 1 
+    2.b Horizontal : [b] h1==t1 & h2==t2-1 : h1 & t1 & t2 - No change & h2 += 1
+    3. Vert1cal : (h1==t1+1) | (h1==t1-1) & h2==t2 : h1 & t1 & t2 - No change & h2 += 1
+    4.a Diagonal : [f] (h1==t1+1) | (h1==t1-1) & h2==t2+1 : h1 - No change & t1 & t2 = h1 & h2 & h2 += 1
+    4.b Diagonal : [b] (h1==t1+1) | (h1==t1-1) & h2==t2-1 : h1 & t1 & t2 - No change & h2 += 1
 
 CASE-2 - Movement (L)
-    INITIALLY :
-    1. Overlapped : hi==ti, hj==tj : hi, ti, tj - No change, hj -= 1
-    2.a Horizontal : [f] hi==ti, hj==tj+1 : hi, ti, tj - No change, hj -= 1 
-    2.b Horizontal : [b] hi==ti, hj==tj-1 : hi, ti - No change, hj -= 1, tj -= 1
-    3. Vertical : (hi==ti+1) | (hi==ti-1), hj==tj : hi, ti, tj - No change, hj -= 1
-    4.a Diagonal : [f] (hi==ti+1) | (hi==ti-1), hj==tj+1 : hi, ti, tj - No change, hj -= 1
-    4.b Diagonal : [b] (hi==ti+1) | (hi==ti-1), hj==tj-1 : hi - No change, ti, tj = hi, hj, hj -= 1
+    INIt1ALLY :
+    1. Overlapped : h1==t1 & h2==t2 : h1 & t1 & t2 - No change & h2 -= 1
+    2.a Horizontal : [f] h1==t1 & h2==t2+1 : h1 & t1 & t2 - No change & h2 -= 1 
+    2.b Horizontal : [b] h1==t1 & h2==t2-1 : h1 & t1 - No change & h2 -= 1 & t2 -= 1
+    3. Vert1cal : (h1==t1+1) | (h1==t1-1) & h2==t2 : h1 & t1 & t2 - No change & h2 -= 1
+    4.a Diagonal : [f] (h1==t1+1) | (h1==t1-1) & h2==t2+1 : h1 & t1 & t2 - No change & h2 -= 1
+    4.b Diagonal : [b] (h1==t1+1) | (h1==t1-1) & h2==t2-1 : h1 - No change & t1 & t2 = h1 & h2 & h2 -= 1
 
 CASE-3 - Movement (U)
-    INITIALLY :
-    1. Overlapped : hi==ti, hj==tj : hj, ti, tj - No change, hi += 1
-    2.a Vertical : [f] hj==tj, hi==ti-1 : hi, ti - No change, hj += 1, tj += 1 
-    2.b Vertical : [b] hi==ti, hj==tj-1 : hi, ti, tj - No change, hj += 1
-    3. Horizontal : (hj==tj+1) | (hj==tj-1), hi==ti : hj, ti, tj - No change, hi += 1
-    4.a Diagonal : [f] (hi==ti+1) | (hi==ti-1), hj==tj+1 : hi - No change, ti, tj = hi, hj, hj += 1
-    4.b Diagonal : [b] (hi==ti+1) | (hi==ti-1), hj==tj-1 : hi, ti, tj - No change, hj += 1
+    INIt1ALLY :
+    1. Overlapped : h1==t1 & h2==t2 : h2 & t2 & t1 - No change & h1 -= 1
+    2.a Vert1cal : [f] h2==t2 & h1==t1-1 : h2 & t2 - No change & h1 -= 1 & t1 -= 1 
+    2.b Vert1cal : [b] h1==t1 & h2==t2+1 : h2 & t2 & t1 - No change & h1 -= 1
+    3. Horizontal : (h2==t2+1) | (h2==t2-1) & h1==t1 : h2 & t2 & t1 - No change & h1 -= 1
+    4.a Diagonal : [f] (h2==t2+1) | (h2==t2-1) & h1==t1-1 : h2 - No change & t1 & t2 = h1 & h2 & h1 -= 1
+    4.b Diagonal : [b] (h2==t2+1) | (h2==t2-1) & h1==t1+1 : h2 & t2 & t1 - No change & h1 -= 1
 
 CASE-4 - Movement (D)
-    INITIALLY :
-    1. Overlapped : hi==ti, hj==tj : hi, ti, tj - No change, hj -= 1
-    2.a Horizontal : [f] hi==ti, hj==tj+1 : hi, ti, tj - No change, hj -= 1 
-    2.b Horizontal : [b] hi==ti, hj==tj-1 : hi, ti - No change, hj -= 1, tj -= 1
-    3. Vertical : (hi==ti+1) | (hi==ti-1), hj==tj : hi, ti, tj - No change, hj -= 1
-    4.a Diagonal : [f] (hi==ti+1) | (hi==ti-1), hj==tj+1 : hi, ti, tj - No change, hj -= 1
-    4.b Diagonal : [b] (hi==ti+1) | (hi==ti-1), hj==tj-1 : hi - No change, ti, tj = hi, hj, hj -= 1
+    INIt1ALLY :
+    1. Overlapped : h1==t1 & h2==t2 : h2 & t2 & t1 - No change & h1 += 1
+    2.a Vert1cal : [f] h2==t2 & h1==t1-1 : h2 & t2 & t1 - No change & h1 += 1 
+    2.b Vert1cal : [b] h1==t1 & h2==t2+1 : h2 & t2 - No change & h1 += 1 & t1 += 1
+    3. Horizontal : (h2==t2+1) | (h2==t2-1) & h1==t1 : h2 & t2 & t1 - No change & h1 += 1
+    4.a Diagonal : [f] (h2==t2+1) | (h2==t2-1) & h1==t1-1 : h2 & t2 & t1 - No change & h1 += 1
+    4.b Diagonal : [b] (h2==t2+1) | (h2==t2-1) & h1==t1+1 : h2 - No change & t1 & t2 = h1 & h2 & h1 += 1
