@@ -10,12 +10,11 @@ n = sum([x[1] for x in lines])
 hgrid = np.zeros([2*n+1, 2*n+1])
 tgrid = np.zeros([2*n+1, 2*n+1])
 
+# PART 1
+
 # Initializing the starting Position :
 hi, hj, ti, tj = n, n, n, n
 hgrid[hi, hj], tgrid[ti, tj] = 1, 1
-
-# print(hgrid.compress(np.all(hgrid == 0, axis=0), axis=1))
-# print(tgrid)
 
 
 def tail_loc(h1, h2, t1, t2, s):
@@ -33,7 +32,7 @@ def tail_loc(h1, h2, t1, t2, s):
     elif s == 'L':
         if (((h1 == t1) & (h2 == t2)) | ((h1 == t1) & (h2 == t2 + 1)) |
             (((h1 == t1 + 1) | (h1 == t1 - 1)) & (h2 == t2)) |
-                (((h1 == t1 + 1) | (h1 == t1 - 1)) & (h2 == t2 - 1))):
+                (((h1 == t1 + 1) | (h1 == t1 - 1)) & (h2 == t2 + 1))):
             h2 -= 1
         elif ((h1 == t1) & (h2 == t2 - 1)):
             h2 -= 1
@@ -63,8 +62,14 @@ def tail_loc(h1, h2, t1, t2, s):
         else:
             t1, t2 = h1, h2
             h1 += 1
-    #print(h1, h2, t1, t2)
+    #print(s, h1, h2, t1, t2)
     return h1, h2, t1, t2
+
+
+def save_array(x, y):
+    x = x[~np.all(x == 0, axis=1)]
+    x = x[:, np.any(x, axis=0)]
+    pd.DataFrame(x).to_csv(f'./{y}.csv')
 
 
 for line in lines:
@@ -73,10 +78,13 @@ for line in lines:
     i = 1
     while i <= line[1]:
         hi, hj, ti, tj = tail_loc(hi, hj, ti, tj, s_)
-        hgrid[hi, hj] = 1 if hgrid[hi, hj] == 0 else 1
-        tgrid[ti, tj] = 1 if tgrid[ti, tj] == 0 else 1
+        hgrid[hi, hj] = 1
+        tgrid[ti, tj] = 1
         i += 1
 
-# pd.DataFrame(hgrid).to_csv('./h.csv')
-# pd.DataFrame(tgrid).to_csv('./t.csv')
-print(sum(sum(tgrid)))
+# Save into CSV files:
+save_array(hgrid, 'h')
+save_array(tgrid, 't')
+print(np.sum(tgrid))
+
+# PART 2
