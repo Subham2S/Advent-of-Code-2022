@@ -2,7 +2,7 @@ import pandas as pd
 #import sys
 import numpy as np
 # np.set_printoptions(threshold=sys.maxsize)
-infile = '92.txt'
+infile = '93.txt'
 data = open(infile).read().strip()
 lines = [[x.split()[0], int(x.split()[1])] for x in data.split('\n')]
 
@@ -100,7 +100,16 @@ diff_dict = {
 }
 
 hgrid = np.zeros([2 * n + 1, 2 * n + 1])
+grid1 = np.zeros([2 * n + 1, 2 * n + 1])
+grid2 = np.zeros([2 * n + 1, 2 * n + 1])
+grid3 = np.zeros([2 * n + 1, 2 * n + 1])
+grid4 = np.zeros([2 * n + 1, 2 * n + 1])
+grid5 = np.zeros([2 * n + 1, 2 * n + 1])
+grid6 = np.zeros([2 * n + 1, 2 * n + 1])
+grid7 = np.zeros([2 * n + 1, 2 * n + 1])
+grid8 = np.zeros([2 * n + 1, 2 * n + 1])
 grid9 = np.zeros([2 * n + 1, 2 * n + 1])
+
 
 hi, hj = n, n
 i1, j1 = n, n
@@ -113,19 +122,16 @@ i7, j7 = n, n
 i8, j8 = n, n
 i9, j9 = n, n
 
-hgrid[hi, hj], grid9[i9, j9] = 1, 1
-
-
-def single_move(i, j, s):
-    if s == 'R':
-        j += 1
-    elif s == 'L':
-        j -= 1
-    elif s == 'U':
-        i -= 1
-    else:
-        i += 1
-    return i, j
+hgrid[hi, hj] = 1
+grid1[i1, j1] = 1
+grid2[i2, j2] = 1
+grid3[i3, j3] = 1
+grid4[i4, j4] = 1
+grid5[i5, j5] = 1
+grid6[i6, j6] = 1
+grid7[i7, j7] = 1
+grid8[i8, j8] = 1
+grid9[i9, j9] = 1
 
 
 def chk_shift(i_o, j_o, i_n, j_n):
@@ -181,10 +187,27 @@ for line in lines:
         #       i5, j5, i6, j6, i7, j7, i8, j8, i9, j9)
         # print("\n")
         hgrid[hi, hj] = 1
-        grid9[i9, i9] = 1
+        grid1[i1, j1] = 1
+        grid2[i2, j2] = 1
+        grid3[i3, j3] = 1
+        grid4[i4, j4] = 1
+        grid5[i5, j5] = 1
+        grid6[i6, j6] = 1
+        grid7[i7, j7] = 1
+        grid8[i8, j8] = 1
+        grid9[i9, j9] = 1
         i += 1
 
 # Save into CSV files:
 save_array(hgrid, 'h')
+save_array(grid1, 'tail_1')
+save_array(grid2, 'tail_2')
+save_array(grid3, 'tail_3')
+save_array(grid4, 'tail_4')
+save_array(grid5, 'tail_5')
+save_array(grid6, 'tail_6')
+save_array(grid7, 'tail_7')
+save_array(grid8, 'tail_8')
 save_array(grid9, 'tail_9')
+
 print(f'Total Positions of 9: {np.sum(grid9)}')
