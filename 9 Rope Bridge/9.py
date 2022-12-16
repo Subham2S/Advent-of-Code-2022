@@ -50,7 +50,7 @@ def tail_loc(h1, h2, t1, t2, s):
         else:
             t1, t2 = h1, h2
             h1 -= 1
-    else:
+    elif s == 'D':
         if (((h1 == t1) & (h2 == t2)) | ((h2 == t2) & (h1 == t1 - 1)) |
             (((h2 == t2 + 1) | (h2 == t2 - 1)) & (h1 == t1)) |
                 (((h2 == t2 + 1) | (h2 == t2 - 1)) & (h1 == t1 - 1))):
@@ -61,6 +61,8 @@ def tail_loc(h1, h2, t1, t2, s):
         else:
             t1, t2 = h1, h2
             h1 += 1
+    else:
+        pass
     #print(s, h1, h2, t1, t2)
     return h1, h2, t1, t2
 
@@ -87,17 +89,6 @@ save_array(tgrid, 't')
 print(np.sum(tgrid))
 
 # PART 2 [H 1 2 3 4 5 6 7 8 9]
-diff_dict = {
-    (1, 1): ['D', 'R'],
-    (1, -1): ['D', 'L'],
-    (-1, 1): ['U', 'R'],
-    (-1, -1): ['U', 'L'],
-    (0, 1): ['R'],
-    (1, 0): ['D'],
-    (0, -1): ['L'],
-    (-1, 0): ['U'],
-    (0, 0): ['O']
-}
 
 hgrid = np.zeros([2 * n + 1, 2 * n + 1])
 grid1 = np.zeros([2 * n + 1, 2 * n + 1])
@@ -135,8 +126,18 @@ grid9[i9, j9] = 1
 
 
 def chk_shift(i_o, j_o, i_n, j_n):
-    row_diff, col_diff = i_n - i_o, j_n - j_o
-    # print(row_diff, col_diff)
+    diff_dict = {
+        (1, 1): ['D', 'R'],
+        (1, -1): ['D', 'L'],
+        (-1, 1): ['U', 'R'],
+        (-1, -1): ['U', 'L'],
+        (0, 1): ['R'],
+        (1, 0): ['D'],
+        (0, -1): ['L'],
+        (-1, 0): ['U'],
+        (0, 0): ['O']
+    }
+    row_diff, col_diff = (i_n - i_o), (j_n - j_o)
     steps = abs(row_diff) + abs(col_diff)
     shift_type = diff_dict[(row_diff, col_diff)]
     return shift_type, steps
